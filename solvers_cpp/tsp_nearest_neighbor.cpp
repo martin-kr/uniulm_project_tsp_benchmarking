@@ -15,7 +15,6 @@ class NearestNeighborSolver {
             bool read_distances = false;
 
             while (std::getline(file, line)) {
-                line.erase(std::remove(line.begin(), line.end(), ':'), line.end());
                 std::istringstream iss(line);
 
                 if (line.find("EOF") != std::string::npos) {
