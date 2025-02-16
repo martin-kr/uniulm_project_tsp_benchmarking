@@ -119,10 +119,35 @@ int main(int argc, char* argv[]) {
     std::string filename = argv[1];
     TwoOptSolver solver(filename);
     auto result = solver.two_opt();
-    std::cout << "Total cost: " << result.first << "\nPath: ";
-    for (int city : result.second) {
-        std::cout << city << " ";
+
+    // prepare output
+    int cost = result.first;
+    std::vector<int> path = result.second;
+    filename = 'tmp_test';
+
+    // Construct the output filename
+    std::string output_filename = "solver_2opt_" + filename + ".txt";
+    
+    // Open the output file stream
+    std::ofstream output_file(output_filename);
+
+    if (output_file.is_open()) {
+        // Write the cost and path in the shortened format
+        output_file << cost << "\n[";
+
+        for (size_t i = 0; i < path.size(); ++i) {
+            output_file << path[i];
+            if (i < path.size() - 1) output_file << ", ";
+        }
+
+        output_file << "]\n";
+    } else {
+        std::cerr << "Failed to open the file.\n";
     }
-    std::cout << std::endl;
-    return 0;
+
+    // Close the file
+    output_file.close();
+
+
+    
 }
