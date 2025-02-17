@@ -1,0 +1,33 @@
+<benchmark>
+    <tasks>
+        <file>att48.tsp</file>
+        <file>eil51.tsp</file>
+        <file>eil76.tsp</file>
+        <file>pr76.tsp</file>
+        <file>kroA100.tsp</file>
+    </tasks>
+
+    <rundefinition name="solver_nn">
+        <command>./solver_nn {inputfile}</command>
+        <option name="timeLimit">120s</option>
+        <option name="coreLimit">1</option> <!-- Optional: Single-threaded -->
+    </rundefinition>
+
+    <rundefinition name="solver_2opt">
+        <command>./solver_2opt {inputfile}</command>
+        <option name="timeLimit">120s</option>
+        <option name="coreLimit">1</option>
+    </rundefinition>
+
+    <rundefinition name="solver_christofides">
+        <command>./solver_christofides {inputfile}</command>
+        <option name="timeLimit">120s</option>
+        <option name="coreLimit">1</option>
+    </rundefinition>
+
+        <rundefinition name="solver_2approx">
+        <command>./solver_2approx {inputfile}</command>
+        <option name="timeLimit">120s</option>
+        <option name="coreLimit">1</option>
+    </rundefinition>
+</benchmark>
