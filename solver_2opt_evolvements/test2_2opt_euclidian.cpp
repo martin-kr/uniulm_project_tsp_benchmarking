@@ -14,54 +14,30 @@ public:
         std::ifstream file(filename);
         std::string line;
         bool read_distances = false;
-        bool explicit_type = true;
 
         while (std::getline(file, line)) {
             std::istringstream iss(line);
 
             if (line.find("EOF") != std::string::npos) {
                 break;
-            } else if (line.find("EDGE_WEIGHT_TYPE") != std::string::npos) {
-                if (line.find("EXPLICIT") != std::string::npos) {
-                    explicit_type = true;
-                } else {
-                    explicit_type = false;
-                }
-            } else if (line.find("EDGE_WEIGHT_SECTION") != std::string::npos || line.find("NODE_COORD_SECTION") != std::string::npos) {
+            } else if (line.find("NODE_COORD_SECTION") != std::string::npos) {
                 read_distances = true;
-            } else if (explicit_type && read_distances) {
-                std::vector<int> row;
-                int value;
-                while (iss >> value) {
-                    row.push_back(value);
-                }
-                distance_matrix.push_back(row);
-            } else if (!explicit_type && read_distances) {
+            } else if (read_distances) {
                 int index, x, y;
                 iss >> index >> x >> y;
                 euc_coordinates.push_back({x, y});
             }
         }
 
-        if (explicit_type) {
-            n = distance_matrix.size();
-            explicit_type = true;
-        } else {
-            n = euc_coordinates.size();
-            explicit_type = false;
-        }
+        n = euc_coordinates.size(); 
     }
 
     int get_cost(int i, int j) {
-        if (explicit_type) {
-            return distance_matrix[i][j];
-        } else {
-            int x1 = euc_coordinates[i].first;
-            int y1 = euc_coordinates[i].second;
-            int x2 = euc_coordinates[j].first;
-            int y2 = euc_coordinates[j].second;
-            return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2)));
-        }
+        int x1 = euc_coordinates[i].first;
+        int y1 = euc_coordinates[i].second;
+        int x2 = euc_coordinates[j].first;
+        int y2 = euc_coordinates[j].second;
+        return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
     }
 
     int calc_path_length() {
@@ -134,12 +110,10 @@ public:
     }
 
 private:
-    std::vector<std::vector<int>> distance_matrix;
     std::vector<std::pair<int, int>> euc_coordinates;
     std::vector<int> best_route;
     int n;
     int best_length;
-    bool explicit_type;
 };
 
 int main(int argc, char* argv[]) {
