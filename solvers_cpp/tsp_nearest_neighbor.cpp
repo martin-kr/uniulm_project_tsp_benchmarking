@@ -3,15 +3,14 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <queue>
-#include <algorithm>
-#include <set>
-#include <tuple>
+#include <limits>
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
-class MSTApproxSolver {
+class NearestNeighborSolver {
 public:
-    MSTApproxSolver(const std::string& filename) {
+    NearestNeighborSolver(const std::string& filename) {
         std::ifstream file(filename);
         std::string line;
         bool read_distances = false;
@@ -65,100 +64,44 @@ public:
         }
     }
 
-    void prim_mst() {
-        mst_edges.clear();
-        total_weight = 0;
+    std::pair<int, std::vector<int>> nearest_neighbor(int start = 0) {
         std::vector<bool> visited(n, false);
-        std::priority_queue<std::tuple<int, int, int>, std::vector<std::tuple<int, int, int>>, std::greater<>> min_heap;
-        min_heap.push({0, 0, -1});  // (weight, vertex, parent)
+        std::vector<int> path;
+        path.push_back(start);
+        visited[start] = true;
+        int total_cost = 0;
 
-        while (mst_edges.size() < n - 1) {
-            auto [weight, u, parent] = min_heap.top();
-            min_heap.pop();
+        for (int i = 0; i < n - 1; ++i) {
+            int last_visited = path.back();
+            int nearest = -1;
+            int min_dist = std::numeric_limits<int>::max();
 
-            if (visited[u]) {
-                continue;
-            }
-
-            visited[u] = true;
-            if (parent != -1) {
-                mst_edges.push_back({parent, u, weight});
-                total_weight += weight;
-            }
-
-            for (int v = 0; v < n; ++v) {
-                if (!visited[v] && get_cost(u, v) > 0) {
-                    min_heap.push({get_cost(u, v), v, u});
+            for (int j = 0; j < n; ++j) {
+                if (!visited[j] && get_cost(last_visited, j) > 0 && get_cost(last_visited, j) < min_dist) {
+                    nearest = j;
+                    min_dist = get_cost(last_visited, j);
                 }
             }
-        }
-    }
 
-    std::vector<int> dfs_mst(int start) {
-        std::vector<bool> visited(n, false);
-        std::vector<int> tour;
-        std::vector<int> stack = {start};
-
-        while (!stack.empty()) {
-            int u = stack.back();
-            stack.pop_back();
-            if (visited[u]) {
-                continue;
-            }
-
-            visited[u] = true;
-            tour.push_back(u);
-
-            for (const auto& edge : mst_edges) {
-                if (std::get<0>(edge) == u && !visited[std::get<1>(edge)]) {
-                    stack.push_back(std::get<1>(edge));
-                } else if (std::get<1>(edge) == u && !visited[std::get<0>(edge)]) {
-                    stack.push_back(std::get<0>(edge));
-                }
-            }
+            path.push_back(nearest);
+            visited[nearest] = true;
+            total_cost += min_dist;
         }
 
-        return tour;
-    }
-
-    std::pair<int, std::vector<int>> two_approx(int start) {
-        prim_mst();
-        std::vector<int> tour = dfs_mst(start);
-
-        std::vector<int> unique_tour;
-        std::set<int> seen;
-        int cost = 0;
-
-        for (size_t i = 0; i < tour.size(); ++i) {
-            int vertex = tour[i];
-            if (seen.find(vertex) == seen.end()) {
-                unique_tour.push_back(vertex);
-                seen.insert(vertex);
-
-                if (unique_tour.size() > 1) {
-                    int prev_vertex = unique_tour[unique_tour.size() - 2];
-                    cost += get_cost(prev_vertex, vertex);
-                }
-            }
-        }
-
-        cost += get_cost(unique_tour.back(), unique_tour[0]);
-
-        return {cost, unique_tour};
+        total_cost += get_cost(path.back(), path[0]);  // Return to start
+        return {total_cost, path};
     }
 
 private:
     std::vector<std::vector<int>> distance_matrix;
     std::vector<std::pair<int, int>> euc_coordinates;
-    std::vector<std::tuple<int, int, int>> mst_edges;
     int n;
-    int total_weight;
     bool explicit_weights;
 };
 
 void write_output(const std::string& filename, int cost, const std::vector<int>& path) {
     // Construct the output filename
-    std::string output_filename = "nearestneighbor_" + filename + ".txt";
+    std::string output_filename = "christofides_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);
@@ -188,8 +131,9 @@ int main(int argc, char* argv[]) {
     }
 
     std::string filename = argv[1];
-    MSTApproxSolver solver(filename);
-    auto result = solver.two_approx(0);
+    srand(time(0));  // Seed for random number generation
+    NearestNeighborSolver solver(filename);
+    auto result = solver.nearest_neighbor();
 
     // prepare output
     int cost = result.first;
