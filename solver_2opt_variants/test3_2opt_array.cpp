@@ -25,7 +25,7 @@ public:
             } else if (line.find("NODE_COORD_SECTION") != std::string::npos) {
                 read_distances = true;
             } else if (read_distances && index < N) {
-                int idx, x, y;
+                float idx, x, y;
                 iss >> idx >> x >> y;
                 euc_coordinates[index] = {x, y};
                 ++index;
@@ -36,11 +36,11 @@ public:
     }
 
     int get_cost(int i, int j) {
-        int x1 = euc_coordinates[i].first;
-        int y1 = euc_coordinates[i].second;
-        int x2 = euc_coordinates[j].first;
-        int y2 = euc_coordinates[j].second;
-        return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
+        float x1 = euc_coordinates[i].first;
+        float y1 = euc_coordinates[i].second;
+        float x2 = euc_coordinates[j].first;
+        float y2 = euc_coordinates[j].second;
+        return std::round(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
     }
 
     int calc_path_length() {
@@ -117,7 +117,7 @@ public:
     }
 
 private:
-    std::array<std::pair<int, int>, N> euc_coordinates;
+    std::array<std::pair<float, float>, N> euc_coordinates;
     std::array<int, N> best_route;
     std::size_t n;
     int best_length;
@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::string filename = argv[1];
-    TwoOptSolver<100> solver(filename); // Replace 100 with the desired size
+    TwoOptSolver<574> solver(filename); // Replace 100 with the desired size
     auto result = solver.two_opt();
 
     // prepare output
@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {
     auto path = result.second;
 
     // Construct the output filename
-    std::string output_filename = "solver_2opt_" + filename + ".txt";
+    std::string output_filename = "tc3_array_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);

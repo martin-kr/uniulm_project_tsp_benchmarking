@@ -8,10 +8,10 @@
 #include <numeric>
 #include <cmath>
 
-std::vector<std::pair<int, int>> read_coordinates(const std::string& filename) {
+std::vector<std::pair<float, float>> read_coordinates(const std::string& filename) {
     std::ifstream file(filename);
     std::string line;
-    std::vector<std::pair<int, int>> euc_coordinates;
+    std::vector<std::pair<float, float>> euc_coordinates;
     bool read_distances = false;
 
     while (std::getline(file, line)) {
@@ -22,7 +22,7 @@ std::vector<std::pair<int, int>> read_coordinates(const std::string& filename) {
         } else if (line.find("NODE_COORD_SECTION") != std::string::npos) {
             read_distances = true;
         } else if (read_distances) {
-            int index, x, y;
+            float index, x, y;
             iss >> index >> x >> y;
             euc_coordinates.push_back({x, y});
         }
@@ -31,15 +31,15 @@ std::vector<std::pair<int, int>> read_coordinates(const std::string& filename) {
     return euc_coordinates;
 }
 
-int get_cost(const std::vector<std::pair<int, int>>& euc_coordinates, int i, int j) {
-    int x1 = euc_coordinates[i].first;
-    int y1 = euc_coordinates[i].second;
-    int x2 = euc_coordinates[j].first;
-    int y2 = euc_coordinates[j].second;
-    return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
+int get_cost(const std::vector<std::pair<float, float>>& euc_coordinates, int i, int j) {
+    float x1 = euc_coordinates[i].first;
+    float y1 = euc_coordinates[i].second;
+    float x2 = euc_coordinates[j].first;
+    float y2 = euc_coordinates[j].second;
+    return std::round(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
 }
 
-int calc_path_length(const std::vector<int>& best_route, const std::vector<std::pair<int, int>>& euc_coordinates) {
+int calc_path_length(const std::vector<int>& best_route, const std::vector<std::pair<float, float>>& euc_coordinates) {
     int n = best_route.size();
     int path_cost = 0;
 
@@ -70,7 +70,7 @@ void swap_edges(std::vector<int>& best_route, int index_i, int index_j) {
 }
 
 std::pair<int, std::vector<int>> two_opt(const std::string& filename) {
-    std::vector<std::pair<int, int>> euc_coordinates = read_coordinates(filename);
+    std::vector<std::pair<float, float>> euc_coordinates = read_coordinates(filename);
     int n = euc_coordinates.size();
     std::vector<int> best_route(n);
     std::iota(best_route.begin(), best_route.end(), 0);
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
     std::vector<int> path = result.second;
 
     // Construct the output filename
-    std::string output_filename = "solver_2opt_" + filename + ".txt";
+    std::string output_filename = "tc1_copy_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);

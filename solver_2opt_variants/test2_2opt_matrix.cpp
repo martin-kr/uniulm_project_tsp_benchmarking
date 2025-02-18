@@ -23,7 +23,7 @@ public:
             } else if (line.find("NODE_COORD_SECTION") != std::string::npos) {
                 read_distances = true;
             } else if (read_distances) {
-                int index, x, y;
+                float index, x, y;
                 iss >> index >> x >> y;
                 euc_coordinates.push_back({x, y});
             }
@@ -34,11 +34,12 @@ public:
         
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
-                int x1 = euc_coordinates[i].first;
-                int y1 = euc_coordinates[i].second;
-                int x2 = euc_coordinates[j].first;
-                int y2 = euc_coordinates[j].second;
-                int cost = std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
+                float x1 = euc_coordinates[i].first;
+                float y1 = euc_coordinates[i].second;
+                float x2 = euc_coordinates[j].first;
+                float y2 = euc_coordinates[j].second;
+
+                int cost = std::round(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
 
                 distance_matrix[i][j] = cost;
                 distance_matrix[j][i] = cost;
@@ -120,7 +121,7 @@ public:
     }
 
 private:
-    std::vector<std::pair<int, int>> euc_coordinates;
+    std::vector<std::pair<float, float>> euc_coordinates;
     std::vector<std::vector<int>> distance_matrix;
     std::vector<int> best_route;
     int n;
@@ -142,7 +143,7 @@ int main(int argc, char* argv[]) {
     std::vector<int> path = result.second;
 
     // Construct the output filename
-    std::string output_filename = "solver_2opt_" + filename + ".txt";
+    std::string output_filename = "tc2_matrix_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);

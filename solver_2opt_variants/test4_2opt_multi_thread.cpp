@@ -24,7 +24,7 @@ public:
             } else if (line.find("NODE_COORD_SECTION") != std::string::npos) {
                 read_distances = true;
             } else if (read_distances) {
-                int index, x, y;
+                float index, x, y;
                 iss >> index >> x >> y;
                 euc_coordinates.push_back({x, y});
             }
@@ -34,11 +34,11 @@ public:
     }
 
     int get_cost(int i, int j) {
-        int x1 = euc_coordinates[i].first;
-        int y1 = euc_coordinates[i].second;
-        int x2 = euc_coordinates[j].first;
-        int y2 = euc_coordinates[j].second;
-        return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
+        float x1 = euc_coordinates[i].first;
+        float y1 = euc_coordinates[i].second;
+        float x2 = euc_coordinates[j].first;
+        float y2 = euc_coordinates[j].second;
+        return std::round(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
     }
 
     int calc_path_length() {
@@ -122,7 +122,7 @@ public:
     }
 
 private:
-    std::vector<std::pair<int, int>> euc_coordinates;
+    std::vector<std::pair<float, float>> euc_coordinates;
     std::vector<int> best_route;
     int n;
     int best_length;
@@ -143,7 +143,7 @@ int main(int argc, char* argv[]) {
     std::vector<int> path = result.second;
 
     // Construct the output filename
-    std::string output_filename = "solver_2opt_" + filename + ".txt";
+    std::string output_filename = "tc4_mt_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);
