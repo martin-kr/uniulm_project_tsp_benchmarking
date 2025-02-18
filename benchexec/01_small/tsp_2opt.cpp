@@ -144,7 +144,7 @@ private:
 
 void write_output(const std::string& filename, int cost, const std::vector<int>& path) {
     // Construct the output filename
-    std::string output_filename = "2opt_" + filename + ".txt";
+    std::string output_filename = "solver_2opt_" + filename + ".txt";
     
     // Open the output file stream
     std::ofstream output_file(output_filename);
