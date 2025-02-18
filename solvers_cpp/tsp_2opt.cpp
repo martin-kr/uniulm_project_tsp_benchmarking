@@ -14,7 +14,6 @@ public:
         std::ifstream file(filename);
         std::string line;
         bool read_distances = false;
-        bool explicit_type = true;
 
         while (std::getline(file, line)) {
             std::istringstream iss(line);
@@ -23,44 +22,56 @@ public:
                 break;
             } else if (line.find("EDGE_WEIGHT_TYPE") != std::string::npos) {
                 if (line.find("EXPLICIT") != std::string::npos) {
-                    explicit_type = true;
-                } else {
-                    explicit_type = false;
+                    explicit_weights = true;
+                } 
+                else if (line.find("CEIL") != std::string::npos) {
+                    explicit_weights = false;
+                    ceil = true; 
                 }
+                else {
+                    explicit_weights = false;
+                    ceil = false; 
+                }
+                    
             } else if (line.find("EDGE_WEIGHT_SECTION") != std::string::npos || line.find("NODE_COORD_SECTION") != std::string::npos) {
                 read_distances = true;
-            } else if (explicit_type && read_distances) {
+            } else if (explicit_weights && read_distances) {
                 std::vector<int> row;
                 int value;
                 while (iss >> value) {
                     row.push_back(value);
                 }
                 distance_matrix.push_back(row);
-            } else if (!explicit_type && read_distances) {
-                int index, x, y;
+            } else if (!explicit_weights && read_distances) {
+                float index, x, y;
                 iss >> index >> x >> y;
                 euc_coordinates.push_back({x, y});
             }
         }
 
-        if (explicit_type) {
+        if (explicit_weights) {
             n = distance_matrix.size();
-            explicit_type = true;
         } else {
             n = euc_coordinates.size();
-            explicit_type = false;
         }
     }
 
     int get_cost(int i, int j) {
-        if (explicit_type) {
+        if (explicit_weights) {
             return distance_matrix[i][j];
         } else {
-            int x1 = euc_coordinates[i].first;
-            int y1 = euc_coordinates[i].second;
-            int x2 = euc_coordinates[j].first;
-            int y2 = euc_coordinates[j].second;
-            return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2)));
+            float x1 = euc_coordinates[i].first;
+            float y1 = euc_coordinates[i].second;
+            float x2 = euc_coordinates[j].first;
+            float y2 = euc_coordinates[j].second;
+
+            if (ceil) {
+                return std::ceil(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2))); 
+            } 
+            else {
+                return std::round(std::sqrt(std::pow(x1 - x2, 2) + std::pow(y1 - y2, 2)));
+            }
+            
         }
     }
 
@@ -135,22 +146,20 @@ public:
 
 private:
     std::vector<std::vector<int>> distance_matrix;
-    std::vector<std::pair<int, int>> euc_coordinates;
+    std::vector<std::pair<float, float>> euc_coordinates;
     std::vector<int> best_route;
     int n;
     int best_length;
-    bool explicit_type;
+    bool explicit_weights;
+    bool ceil;
 };
 
 void write_output(const std::string& filename, int cost, const std::vector<int>& path) {
-    // Construct the output filename
+
     std::string output_filename = "solver_2opt_" + filename + ".txt";
-    
-    // Open the output file stream
     std::ofstream output_file(output_filename);
 
     if (output_file.is_open()) {
-        // Write the cost and path in the shortened format
         output_file << cost << "\n[";
 
         for (size_t i = 0; i < path.size(); ++i) {
@@ -163,7 +172,6 @@ void write_output(const std::string& filename, int cost, const std::vector<int>&
         std::cerr << "Failed to open the file.\n";
     }
 
-    // Close the file
     output_file.close();
 }
 
