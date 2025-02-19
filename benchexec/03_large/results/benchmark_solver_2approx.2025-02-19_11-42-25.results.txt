@@ -1,0 +1,51 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_solver_2approx.xml
+name:                    benchmark_solver_2approx
+run sets:
+date:                    Wed, 2025-02-19 11:42:25 CET
+tool:                    solver_2approx
+tool executable:         ./solver_2approx
+options:
+resource limits:
+- time:                  5000 s
+- cpu cores:             1
+hardware requirements:
+- cpu cores:             1
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2807.997 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+
+
+
+Run set 1 of 1 with options '' and propertyfile 'None'
+
+inputfile               status                       cpu time   wall time        host
+-------------------------------------------------------------------------------------
+u2319.tsp               done                             2.53        2.54        None
+pcb3038.tsp             done                             4.43        4.40        None
+fl3795.tsp              done                            10.76       10.80        None
+fnl4461.tsp             done                             9.04        9.14        None
+rl5915.tsp              done                            16.90       16.90        None
+pla7397.tsp             done                            35.59       35.64        None
+rl11849.tsp             done                            68.57       68.86        None
+brd14051.tsp            done                           182.94      183.36        None
+d18512.tsp              done                           170.53      171.43        None
+pla33810.tsp            ABORTED                        463.09      524.07        None
+-------------------------------------------------------------------------------------
+Run set 1               done                           964.58     1042.77           -
+
+Statistics:             10 Files
+  correct:               0
+    correct true:        0
+    correct false:       0
+  incorrect:             0
+    incorrect true:      0
+    incorrect false:     0
+  unknown:               1

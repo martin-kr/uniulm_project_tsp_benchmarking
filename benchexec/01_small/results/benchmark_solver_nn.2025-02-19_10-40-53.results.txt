@@ -1,0 +1,51 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_solver_nn.xml
+name:                    benchmark_solver_nn
+run sets:
+date:                    Wed, 2025-02-19 10:40:53 CET
+tool:                    solver_nn
+tool executable:         ./solver_nn
+options:
+resource limits:
+- time:                  120 s
+- cpu cores:             1
+hardware requirements:
+- cpu cores:             1
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2807.997 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+
+
+
+Run set 1 of 1 with options '' and propertyfile 'None'
+
+inputfile               status                       cpu time   wall time        host
+-------------------------------------------------------------------------------------
+eil51.tsp               done                             0.01        0.01        None
+st70.tsp                done                             0.01        0.01        None
+kroA100.tsp             done                             0.01        0.02        None
+pr144.tsp               done                             0.01        0.02        None
+ts225.tsp               done                             0.01        0.02        None
+a280.tsp                done                             0.02        0.02        None
+pr299.tsp               done                             0.02        0.03        None
+pr439.tsp               done                             0.03        0.04        None
+pcb442.tsp              done                             0.03        0.04        None
+d493.tsp                done                             0.04        0.05        None
+-------------------------------------------------------------------------------------
+Run set 1               done                             0.38       15.01           -
+
+Statistics:             10 Files
+  correct:               0
+    correct true:        0
+    correct false:       0
+  incorrect:             0
+    incorrect true:      0
+    incorrect false:     0
+  unknown:               0
