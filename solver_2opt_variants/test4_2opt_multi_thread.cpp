@@ -83,7 +83,7 @@ public:
             #pragma omp parallel for schedule(dynamic) shared(improvement_found, break_outer_loop)
             for (int i = 0; i < n - 1; ++i) {
                 if (break_outer_loop) {
-                    break;
+                    continue;
                 }
 
                 for (int j = i + 2; j < n; ++j) {
@@ -107,12 +107,13 @@ public:
                     if (len_delta < 0 && !break_outer_loop) {
                         #pragma omp critical
                         {
-                            improvement_found = true;
-                            best_length += len_delta;
-                            swap_edges(i, j);
-                            break_outer_loop = true;
+			    if (!break_outer_loop) {
+                                improvement_found = true;
+                                best_length += len_delta;
+                                swap_edges(i, j);
+                                break_outer_loop = true;
+			    }
                         }
-                        break;
                     }
                 }
             }
