@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.2.3dtd">
+
+<benchmark tool="solver_tc4_st"
+           timelimit="5000s"
+           hardtimelimit="5000s"
+           cpuCores="1">
+
+  <tasks>
+	  <withoutfile>u2319.tsp</withoutfile>
+	  <withoutfile>fl3795.tsp</withoutfile>
+	  <withoutfile>rl5915.tsp</withoutfile>
+	  <withoutfile>pla7397.tsp</withoutfile>
+	  <withoutfile>brd14051.tsp</withoutfile>
+  </tasks>
+
+  <rundefinition/>
+
+</benchmark>
