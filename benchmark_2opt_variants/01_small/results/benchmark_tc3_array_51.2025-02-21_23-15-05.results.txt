@@ -1,0 +1,24 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_tc3_array_51.xml
+name:                    benchmark_tc3_array_51
+run sets:
+date:                    Fri, 2025-02-21 23:15:05 CET
+tool:                    solver_tc3_array_51
+tool executable:         ./solver_tc3_array_51
+options:
+resource limits:
+- time:                  120 s
+- cpu cores:             1
+hardware requirements:
+- cpu cores:             1
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2808.001 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+

@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::string filename = argv[1];
-    TwoOptSolver<14051> solver(filename); // Replace 100 with the desired size
+    TwoOptSolver<225> solver(filename); // Replace 100 with the desired size
     auto result = solver.two_opt();
 
     // prepare output
