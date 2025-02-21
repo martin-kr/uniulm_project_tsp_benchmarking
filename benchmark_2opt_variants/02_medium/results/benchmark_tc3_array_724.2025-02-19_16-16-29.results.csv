@@ -1,0 +1,4 @@
+tool	solver_tc3_array_724 	solver_tc3_array_724 	solver_tc3_array_724 	solver_tc3_array_724 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+u724.tsp	done	0.6228906	0.6496672610010137	5.279744

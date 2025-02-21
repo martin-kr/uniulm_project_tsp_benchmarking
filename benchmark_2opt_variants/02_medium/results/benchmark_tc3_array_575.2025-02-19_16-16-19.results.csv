@@ -1,0 +1,4 @@
+tool	solver_tc3_array_575 	solver_tc3_array_575 	solver_tc3_array_575 	solver_tc3_array_575 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+rat575.tsp	done	0.3823961	0.40428108199921553	5.283840

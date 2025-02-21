@@ -1,0 +1,46 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_tc3_vector.xml
+name:                    benchmark_tc3_vector
+run sets:
+date:                    Wed, 2025-02-19 17:06:59 CET
+tool:                    solver_tc3_vector
+tool executable:         ./solver_tc3_vector
+options:
+resource limits:
+- time:                  5000 s
+- cpu cores:             1
+hardware requirements:
+- cpu cores:             1
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2807.997 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+
+
+
+Run set 1 of 1 with options '' and propertyfile 'None'
+
+inputfile               status                       cpu time   wall time        host
+-------------------------------------------------------------------------------------
+u2319.tsp               done                             3.37        3.44        None
+fl3795.tsp              done                            82.46       83.81        None
+rl5915.tsp              done                            60.10       61.04        None
+pla7397.tsp             done                            76.10       77.31        None
+brd14051.tsp            done                           291.70      296.29        None
+-------------------------------------------------------------------------------------
+Run set 1               done                           513.82      529.44           -
+
+Statistics:              5 Files
+  correct:               0
+    correct true:        0
+    correct false:       0
+  incorrect:             0
+    incorrect true:      0
+    incorrect false:     0
+  unknown:               0

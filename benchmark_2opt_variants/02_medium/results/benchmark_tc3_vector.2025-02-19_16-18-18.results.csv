@@ -1,0 +1,8 @@
+tool	solver_tc3_vector 	solver_tc3_vector 	solver_tc3_vector 	solver_tc3_vector 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+rat575.tsp	done	0.350412	0.36666012100249645	5.324800
+u724.tsp	done	0.5333484	0.5503594830006477	5.287936
+pr1002.tsp	done	1.183357	1.2118545369994536	5.320704
+u1432.tsp	done	1.3399738	1.372568893002608	5.300224
+u1817.tsp	done	2.6966337	2.759595272000297	5.320704

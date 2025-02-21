@@ -1,0 +1,46 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_tc2_matrix.xml
+name:                    benchmark_tc2_matrix
+run sets:
+date:                    Wed, 2025-02-19 17:03:08 CET
+tool:                    solver_tc2_matrix
+tool executable:         ./solver_tc2_matrix
+options:
+resource limits:
+- time:                  5000 s
+- cpu cores:             1
+hardware requirements:
+- cpu cores:             1
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2807.997 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+
+
+
+Run set 1 of 1 with options '' and propertyfile 'None'
+
+inputfile               status                       cpu time   wall time        host
+-------------------------------------------------------------------------------------
+u2319.tsp               done                             0.80        0.84        None
+fl3795.tsp              done                            14.28       14.50        None
+rl5915.tsp              done                            13.88       14.11        None
+pla7397.tsp             done                            17.09       17.37        None
+brd14051.tsp            done                            85.99       87.37        None
+-------------------------------------------------------------------------------------
+Run set 1               done                           132.15      141.75           -
+
+Statistics:              5 Files
+  correct:               0
+    correct true:        0
+    correct false:       0
+  incorrect:             0
+    incorrect true:      0
+    incorrect false:     0
+  unknown:               0

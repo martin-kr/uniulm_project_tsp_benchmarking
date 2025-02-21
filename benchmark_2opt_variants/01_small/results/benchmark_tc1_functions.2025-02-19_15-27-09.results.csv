@@ -1,0 +1,8 @@
+tool	solver_tc1_functions 	solver_tc1_functions 	solver_tc1_functions 	solver_tc1_functions 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+eil51.tsp	done	0.0079458	0.026016830997832585	5.308416
+pr144.tsp	done	0.0244206	0.03405981700052507	5.193728
+ts225.tsp	done	0.0650534	0.07781754299867316	5.189632
+pr439.tsp	done	0.2361517	0.24776766300055897	5.189632
+d493.tsp	done	0.2803008	0.2928726980026113	5.300224

@@ -8,11 +8,11 @@
            cpuCores="1">
 
   <tasks>
-	  <withoutfile>eil51.tsp</withoutfile>
-	  <withoutfile>pr144.tsp</withoutfile>
-	  <withoutfile>ts225.tsp</withoutfile>
-	  <withoutfile>pr439.tsp</withoutfile>
-	  <withoutfile>d493.tsp</withoutfile>
+	  <withoutfile>u2319.tsp</withoutfile>
+	  <withoutfile>fl3795.tsp</withoutfile>
+	  <withoutfile>rl5915.tsp</withoutfile>
+	  <withoutfile>pla7397.tsp</withoutfile>
+	  <withoutfile>brd14051.tsp</withoutfile>
   </tasks>
 
   <rundefinition/>

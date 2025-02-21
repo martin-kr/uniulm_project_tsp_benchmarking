@@ -1,0 +1,4 @@
+tool	solver_tc3_array_1002 	solver_tc3_array_1002 	solver_tc3_array_1002 	solver_tc3_array_1002 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+pr1002.tsp	done	1.3735011	1.405705200999364	5.304320

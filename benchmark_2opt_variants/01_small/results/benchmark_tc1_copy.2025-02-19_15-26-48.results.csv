@@ -1,0 +1,8 @@
+tool	solver_tc1_copy 	solver_tc1_copy 	solver_tc1_copy 	solver_tc1_copy 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+eil51.tsp	done	0.0076354	0.024147812997398432	5.304320
+pr144.tsp	done	0.0256208	0.03491458300049999	5.201920
+ts225.tsp	done	0.0548775	0.0645565999984683	5.189632
+pr439.tsp	done	0.2001054	0.21194421199834323	5.304320
+d493.tsp	done	0.2545633	0.26749415100130136	5.189632

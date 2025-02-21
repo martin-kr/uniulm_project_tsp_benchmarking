@@ -1,0 +1,4 @@
+tool	solver_tc3_array_493 	solver_tc3_array_493 	solver_tc3_array_493 	solver_tc3_array_493 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+d493.tsp	done	0.2845322	0.3065421999999671	5.173248

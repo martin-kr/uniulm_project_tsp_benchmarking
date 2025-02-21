@@ -1,0 +1,4 @@
+tool	solver_tc3_array_1432 	solver_tc3_array_1432 	solver_tc3_array_1432 	solver_tc3_array_1432 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+u1432.tsp	done	1.5429609	1.5776306859988836	5.304320

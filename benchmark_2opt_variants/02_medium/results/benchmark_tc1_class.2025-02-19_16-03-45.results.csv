@@ -1,0 +1,8 @@
+tool	solver_tc1_class 	solver_tc1_class 	solver_tc1_class 	solver_tc1_class 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+rat575.tsp	done	0.3413586	0.3646397660013463	5.283840
+u724.tsp	done	0.5420927	0.5635256649984512	5.324800
+pr1002.tsp	done	1.1735458	1.2076144460006617	5.324800
+u1432.tsp	done	1.3469501	1.391386829000112	5.324800
+u1817.tsp	done	2.694516	2.7574872779987345	5.300224

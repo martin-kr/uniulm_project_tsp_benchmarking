@@ -1,0 +1,46 @@
+   BENCHMARK INFORMATION
+benchmark definition:    benchmark_tc4_mt_4proc.xml
+name:                    benchmark_tc4_mt_4proc
+run sets:
+date:                    Wed, 2025-02-19 15:30:10 CET
+tool:                    solver_tc4_mt
+tool executable:         ./solver_tc4_mt
+options:
+resource limits:
+- time:                  120 s
+- cpu cores:             4
+hardware requirements:
+- cpu cores:             4
+------------------------------------------------------------
+
+   SYSTEM INFORMATION
+host:                    NB10
+os:                      Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35
+cpu:                     Intel Core i7-7700HQ CPU @ 2.80GHz
+- cores:                 8
+- max frequency:         2807.997 MHz
+ram:                     8308.936704 MB
+------------------------------------------------------------
+
+
+
+Run set 1 of 1 with options '' and propertyfile 'None'
+
+inputfile               status                       cpu time   wall time        host
+-------------------------------------------------------------------------------------
+eil51.tsp               done                             0.03        0.03        None
+pr144.tsp               done                             0.13        0.05        None
+ts225.tsp               done                             0.43        0.12        None
+pr439.tsp               done                             3.41        0.87        None
+d493.tsp                done                            29.90        7.61        None
+-------------------------------------------------------------------------------------
+Run set 1               done                            33.94       16.32           -
+
+Statistics:              5 Files
+  correct:               0
+    correct true:        0
+    correct false:       0
+  incorrect:             0
+    incorrect true:      0
+    incorrect false:     0
+  unknown:               0
