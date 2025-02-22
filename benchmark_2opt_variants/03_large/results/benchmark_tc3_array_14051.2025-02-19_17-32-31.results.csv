@@ -1,0 +1,4 @@
+tool	solver_tc3_array_14051 	solver_tc3_array_14051 	solver_tc3_array_14051 	solver_tc3_array_14051 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+brd14051.tsp	done	331.4329473	336.5662783279986	5.935104

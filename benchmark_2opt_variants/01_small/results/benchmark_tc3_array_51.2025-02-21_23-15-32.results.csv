@@ -1,0 +1,4 @@
+tool	solver_tc3_array_51 	solver_tc3_array_51 	solver_tc3_array_51 
+run set	0	0	0
+	status	cputime (s)	walltime (s)
+eil51.tsp	done	0.0073744	0.03094358699991062

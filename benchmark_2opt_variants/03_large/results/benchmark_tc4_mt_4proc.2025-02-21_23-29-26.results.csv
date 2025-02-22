@@ -1,0 +1,8 @@
+tool	solver_tc4_mt 	solver_tc4_mt 	solver_tc4_mt 	solver_tc4_mt 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+u2319.tsp	done	249.1267969	62.30420038600005	6.164480
+fl3795.tsp	TIMEOUT	5003.8734532	1251.0023196329998	5.996544
+rl5915.tsp				
+pla7397.tsp				
+brd14051.tsp				

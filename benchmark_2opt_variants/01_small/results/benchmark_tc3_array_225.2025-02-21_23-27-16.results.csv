@@ -1,0 +1,4 @@
+tool	solver_tc3_array_225 	solver_tc3_array_225 	solver_tc3_array_225 	solver_tc3_array_225 
+run set	0	0	0	0
+	status	cputime (s)	walltime (s)	memory (MB)
+ts225.tsp	done	0.0638465	0.08604853599990747	5.173248
